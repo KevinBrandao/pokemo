@@ -1,22 +1,19 @@
 import React, { useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './style.css';
  
 function App() {
  
   const [pokemon, setPokemon] = useState([]);
  
   function loadAPI() {
-    let url = "https://pokeapi.co/api/v2/pokemon/pikachu/";
+    let url = "https://pokeapi.co/api/v2/pokemon/6";
     fetch(url)
       .then(response => response.json())
       .then(res => {
-        console.log(res);
-        setPokemon(res);
+        console.log(res)
+        setPokemon(res)
       })
-      .then(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   }
  
   useEffect(() => {
@@ -24,12 +21,21 @@ function App() {
   }, []);
  
   return (
-    <div>
-      <h1>TESTE</h1>
+    <div className="container">
+      <header>
+        <strong>Pokemons API</strong>
+      </header>
+
       <div>
-        <p><strong>Nome: {pokemon.name}</strong></p>
-        <strong>Url: {pokemon.url}</strong>
+        <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+            alt={pokemon.name}/>
+        <div><strong>Nome: {pokemon.name}</strong></div>
+        <div>N° {pokemon.id} </div>
+        <div>Peso: {pokemon.weight / 10} kg</div>
+        <div>Altura: {pokemon.height / 10} m</div>
       </div>
+
     </div>  
 
   );
