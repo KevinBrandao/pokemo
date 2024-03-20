@@ -24,5 +24,18 @@ header{
 }
 
 .container img {
-    height: 500px;
+    height: 100%;
+}
+
+form {
+    background-color: gold;
+    border-radius: 400cap;
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    height: auto;
+    margin-top: 60px;
+    margin-left: 60px
 }
