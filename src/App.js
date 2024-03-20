@@ -47,6 +47,8 @@ function App() {
       <p></p>
       <p></p>
 
+      <div className='card'>
+        
       <div>
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
@@ -60,6 +62,9 @@ function App() {
         <div>Peso: {pokemon.weight / 10} kg</div>
         <div>Altura: {pokemon.height / 10} m</div>
       </div>
+
+        </div>
+
     </div>
   );
 }

@@ -39,3 +39,16 @@ form {
     margin-top: 60px;
     margin-left: 60px
 }
+.card {
+    display: flexbox;
+    border: solid 10px gold;
+    position: relative;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: -30px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.377);
+    border-radius: 20px;
+    background: radial-gradient(#000);
+     
+  }
