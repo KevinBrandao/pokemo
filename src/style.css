@@ -25,6 +25,7 @@ header{
 
 .container img {
     height: 100%;
+    animation: shake 0.5s infinite alternate; /* Adiciona a animação de shake */
 }
 
 form {
@@ -50,5 +51,16 @@ form {
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.377);
     border-radius: 20px;
     background: radial-gradient(#000);
-     
+} 
+
+  
+  /* Defina a animação de shake */
+  @keyframes shake {
+    from {
+      transform: translateX(-5px);
+    }
+    to {
+      transform: translateX(5px);
+    }
   }
+  
