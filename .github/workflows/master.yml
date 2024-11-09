@@ -1,0 +1,53 @@
+name: CI/CD Pokemo-React
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    construir-e-publicar:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Configurar Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "20"
+
+            - name: Instalar dependências
+              run: npm ci
+
+            - name: Construir Pokemo-React
+              run: npm run build
+
+            - name: Login no DockerHub
+              uses: docker/login-action@v2
+              with:
+                  username: KevinBrandao
+                  password: ${{ secrets.DOCKERHUB_TOKEN_TRABALHO }}
+
+            - name: Construir e publicar imagem Docker
+              uses: docker/build-push-action@v4
+              with:
+                  context: .
+                  push: true
+                  tags: KevinBrandao/Pokemo-React:latest
+
+    implantar:
+        needs: construir-e-publicar
+        runs-on: ubuntu-latest
+        steps:
+            - name: Implantar no servidor remoto
+              uses: appleboy/ssh-action@master
+              with:
+                  host: 201.23.3.86
+                  username: aluno
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  script: |
+                      docker pull KevinBrandao/Pokemo-React:latest
+                      docker stop Pokemo-React || true
+                      docker rm Pokemo-React || true
+                      docker run -d --name Pokemo-React -p 8095:80 KevinBrandao/Pokemo-React::latest
