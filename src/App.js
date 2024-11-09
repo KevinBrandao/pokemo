@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   }
 
   useEffect(() => {
-    loadAPI('charizard'); // Carrega o Charizard por padrão quando a aplicação é iniciada
+    loadAPI('charizard'); // Carrega o Charizard por padrão quando a aplicação é iniciada // Digite o nome do Pokémon
   }, []);
 
   const handleSubmit = (e) => {
@@ -38,7 +38,7 @@ function App() {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Digite o nome do Pokémon"
+          placeholder="Pokémon"
         />
         <button type="submit">Buscar</button>
       </form>
