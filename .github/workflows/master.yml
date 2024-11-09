@@ -1,4 +1,4 @@
-name: CI/CD Pokemo-React
+name: CI/CD pokemoreact
 
 on:
     push:
@@ -20,7 +20,7 @@ jobs:
             - name: Instalar dependências
               run: npm i
 
-            - name: Construir Pokemo-React
+            - name: Construir pokemoreact
               run: npm run build
 
             - name: Login no DockerHub
@@ -34,7 +34,7 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: kevinmsbrandaofatec/Pokemo-React:latest
+                  tags: kevinmsbrandaofatec/pokemoreact:latest
 
     implantar:
         needs: construir-e-publicar
@@ -47,7 +47,7 @@ jobs:
                   username: aluno
                   key: ${{ secrets.SERVER_SSH_KEY }}
                   script: |
-                      docker pull kevinmsbrandaofatec/Pokemo-React:latest
-                      docker stop Pokemo-React || true
-                      docker rm Pokemo-React || true
-                      docker run -d --name Pokemo-React -p 8095:80 kevinmsbrandaofatec/Pokemo-React:latest
+                      docker pull kevinmsbrandaofatec/pokemoreact:latest
+                      docker stop pokemoreact || true
+                      docker rm pokemoreact || true
+                      docker run -d --name pokemoreact -p 8095:80 kevinmsbrandaofatec/pokemoreact:latest
