@@ -26,7 +26,7 @@ jobs:
             - name: Login no DockerHub
               uses: docker/login-action@v2
               with:
-                  username: KevinBrandao
+                  username: kevinmsbrandaofatec
                   password: ${{ secrets.DOCKERHUB_TOKEN_TRABALHO }}
 
             - name: Construir e publicar imagem Docker
@@ -34,7 +34,7 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: KevinBrandao/Pokemo-React:latest
+                  tags: kevinmsbrandaofatec/Pokemo-React:latest
 
     implantar:
         needs: construir-e-publicar
@@ -47,7 +47,7 @@ jobs:
                   username: aluno
                   key: ${{ secrets.SERVER_SSH_KEY }}
                   script: |
-                      docker pull KevinBrandao/Pokemo-React:latest
+                      docker pull kevinmsbrandaofatec/Pokemo-React:latest
                       docker stop Pokemo-React || true
                       docker rm Pokemo-React || true
-                      docker run -d --name Pokemo-React -p 8095:80 KevinBrandao/Pokemo-React::latest
+                      docker run -d --name Pokemo-React -p 8095:80 kevinmsbrandaofatec/Pokemo-React:latest
