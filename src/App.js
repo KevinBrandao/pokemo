@@ -38,7 +38,7 @@ function App() {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Pokémon"
+          placeholder="Digite o nome do Pokémon"
         />
         <button type="submit">Buscar</button>
       </form>
