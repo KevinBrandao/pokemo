@@ -50,4 +50,6 @@ jobs:
                       docker pull kevinmsbrandaofatec/pokemoreact:latest
                       docker stop pokemoreact || true
                       docker rm pokemoreact || true
-                      docker run -d --name pokemoreact -p 8095:80 kevinmsbrandaofatec/pokemoreact:latest
+                      docker run -d --name pokemoreact -p 80:80 kevinmsbrandaofatec/pokemoreact:latest
+
+# porta certa docker run -d --name pokemoreact -p 8095:80 kevinmsbrandaofatec/pokemoreact:latest
